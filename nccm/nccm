@@ -782,8 +782,9 @@ LogWrite.setLevel(LogLevel)
 LogWrite.propagate = False
     # ^ Prevents duplicate logging by ancestor loggers (if any)
 
-LogHandler = CustomHandler()
-LogWrite.addHandler(LogHandler)
+# Disable syslog handler for macos
+#LogHandler = CustomHandler()
+#LogWrite.addHandler(LogHandler)
 
 #LogWriteFormatter = logging.Formatter(
 #    '{}[%(process)d]: <%(levelname)s> '
@@ -832,7 +833,7 @@ LogWriteFormatter = logging.Formatter(
     #   PN: MainProcess , MN: cm , FN: SetupWindows , LI: 1268 , TN: MainThread):
     #   ConnectionsList window built
 
-LogHandler.setFormatter(LogWriteFormatter)
+#LogHandler.setFormatter(LogWriteFormatter)
 LogWrite.debug('nccm started with log level == {} as set by '
     'LogWrite.setLevel (hardcoded in the script)'
         .format(LogWrite.getEffectiveLevel()))
